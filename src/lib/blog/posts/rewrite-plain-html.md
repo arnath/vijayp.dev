@@ -63,11 +63,11 @@ so I wouldn't have to remember the serve command.
 
 ### Results
 
-The outcome was not the _most_ revolutionary because my website was really simple in the first
-place. But the size of my "compiled" website asset went from ~356kb to ~88kb. My project tree got a
-lot simpler and the only Javascript on the site now is to highlight code. I'm also just happier
-about the state of things. I feel like I understand how and why my site works (where before I
-understood parts but not the whole mystery).
+The [outcome][repo] was not the _most_ revolutionary because my website was really simple in the
+first place. But the size of my "compiled" website asset went from ~356kb to ~88kb. My project tree
+got a lot simpler and the only Javascript on the site now is to highlight code. I'm also just
+happier about the state of things. I feel like I understand how and why my site works (where before
+I understood parts but not the whole mystery).
 
 <table>
   <thead style="vertical-align: bottom; text-align: center;">
@@ -78,8 +78,8 @@ understood parts but not the whole mystery).
   </thead>
   <tbody style="vertical-align: top; text-align: center;">
     <tr>
-      <td><img src="../rewrite-plain-html-before.png" /></td>
-      <td><img src="../rewrite-plain-html-after.png" /></td>
+      <td><img src="./before.png" /></td>
+      <td><img src="./after.png" /></td>
   </tbody>
 </table>
 
@@ -97,9 +97,9 @@ these.
   find to fix this, or maybe just use something like FastAPI that has automatic reload. But until I
   do something about it, there's a minor added cost every time I make a change.
 
-Also, I think [this repository][repo] is now a reasonably good template for someone who wants to
-make a simple website with some Markdown blog posts without using a generator. I was surprised when
-I started this project how difficult it was to find a guide about how to write your site without a
+Also, I think this repository is now a reasonably good template for someone who wants to make a
+simple website with some Markdown blog posts without using a generator. I was surprised when I
+started this project how difficult it was to find a guide about how to write your site without a
 framework. Hopefully this can help some other people.
 
 [agio]: https://github.com/arnath/arnath.github.io
