@@ -4,9 +4,9 @@ date: 2025-01-15
 published: true
 ---
 
-This week, I decided to rewrite my website using plain HTML and CSS. When I originally made it, I
-used SvelteKit for simplicity. It was a more interesting project than I was expecting when I started
-working so I wanted to share my thoughts on the experience.
+This week, I decided to rewrite my website using plain HTML and CSS. When I [originally made
+it][agio], I used SvelteKit for simplicity. It was a more interesting project than I was expecting
+when I started working so I wanted to share my thoughts on the experience.
 
 ### Why?
 
@@ -102,6 +102,7 @@ make a simple website with some Markdown blog posts without using a generator. I
 I started this project how difficult it was to find a guide about how to write your site without a
 framework. Hopefully this can help some other people.
 
+[agio]: https://github.com/arnath/arnath.github.io
 [pandoc]: https://pandoc.org/
 [uv]: https://docs.astral.sh/uv/
 [repo]: https://github.com/arnath/vijayp.dev
