@@ -73,7 +73,7 @@ ul {
   margin: 0;
 }
 
-code {
+/* code {
   font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono",
     "Courier New", monospace;
   font-size: 15px;
@@ -82,7 +82,7 @@ code {
   text-shadow: none;
   padding: 2px;
   border-radius: 4px;
-}
+} */
 
 /* Global convenience classes */
 .stretch {
