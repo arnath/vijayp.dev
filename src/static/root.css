@@ -73,16 +73,9 @@ ul {
   margin: 0;
 }
 
-/* code {
-  font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono",
-    "Courier New", monospace;
-  font-size: 15px;
-  color: #edf2f8;
-  background: #0066b2;
-  text-shadow: none;
-  padding: 2px;
-  border-radius: 4px;
-} */
+code {
+  font-size: 14px;
+}
 
 /* Global convenience classes */
 .stretch {

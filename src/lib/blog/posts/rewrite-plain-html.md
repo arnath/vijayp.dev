@@ -16,42 +16,44 @@ simple so I wasn't gaining a lot from using SvelteKit. I also wanted to move the
 Cloudflare Pages so this was an opportune time to make some changes.
 
 However, the primary reason I decided to make some changes is that I find the Javascript bundler and
-building ecosystem _incredibly_ aggravating to use. I think this is best illustrated with an
-example.
-
-One of the things I set up my old website to do was build the blog section from the set of Markdown
-posts. I assumed this would be easy to do. SvelteKit and Vite allow you to prerender your website
-and I had a set of files at build time - I just needed to add some logic to transform them. Instead,
-it was infuriatingly difficult to figure out a way to just get a handle to a set of files in my tree
-at build time (let me caveat that I'm not a frontend dev and maybe I missed something obvious). It
-took me hours of Googling and trying out different options to come up with this awful piece of code
-that worked to load the contents of a file and give them to my page:
+building ecosystem _incredibly_ aggravating to use. For example, one of the things I set up my old
+website to do was build the blog section from the set of Markdown posts. I assumed this would be
+easy to do. SvelteKit and Vite allow you to prerender your website and I had a set of files at build
+time - I just needed to add some logic to transform them. Instead, it was infuriatingly difficult to
+figure out a way to just get a handle to a set of files in my tree at build time (let me caveat that
+I'm not a frontend dev and maybe I missed something obvious). It took me hours of Googling and
+trying out different options to come up with this awful piece of code that worked to load the
+contents of a file and give them to my page:
 
 ```
 import type { PageLoad } from "./$types";
 
 export const load: PageLoad = async ({ params }) => {
-  const file = await import(`../../../../lib/assets/posts/${params.slug}.md`);
+  const file = await import(
+    `../../../../lib/assets/posts/${params.slug}.md`
+  );
 
   return { content: file.default, ...file.metadata };
 };
 ```
 
 I was tired of dealing with things like this for the tiny amount I was gaining from using SvelteKit.
-So I finally decided it was time for a rewrite.
+And so, I finally decided it was time for a rewrite.
 
 ### How?
 
 I think spending too much time on Hacker News gave me the misconception that writing a website using
 plain HTML and CSS would be a relatively well-paved path in 2025. I spent some time looking around
-for guides or a "canonical" way of doing this and found that there isn't really one. So I decided to
-just start from scratch with an empty directory and go from there.
+for guides or a "canonical" way of doing this and found that there isn't really one. Because of
+that, I decided to just start from scratch with an empty directory and go from there. My website is
+small enough that I was able to remake a lot of the pages as static HTML.
 
-My website is small enough that most of it is just static HTML that I wrote in this step. However, I
-needed some kind of script to turn my Markdown blog posts into HTML content. I investigated some
-options for this and found [Pandoc][pandoc]. Pandoc is a universal document converter for converting
-markup formats. It provides a library and a CLI for converting documents from Markdown to HTML
-(along with many other formats).
+However, I prefer writing blog posts in Markdown. It's easier to write than HTML, I can pull posts
+out of my existing Obsidian vault, and I just find it more convenient. Therefore, I needed some kind
+of script to turn my Markdown blog posts into HTML content. I investigated some options for this and
+found [Pandoc][pandoc]. Pandoc is a universal document converter for converting markup formats. It
+provides a library and a CLI for converting documents from Markdown to HTML (along with many other
+formats).
 
 To write the script, I wanted something as lightweight as possible but easier to use than a Bash
 script. This led me to Python and [uv][uv]. I've found that uv basically abstracts away the Python
@@ -63,9 +65,9 @@ so I wouldn't have to remember the serve command.
 
 The outcome was not the _most_ revolutionary because my website was really simple in the first
 place. But the size of my "compiled" website asset went from ~356kb to ~88kb. My project tree got a
-lot simpler and the site now works with 0 Javascript. I'm also just happier about the state of
-things. I feel like I understand how and why my site works (where before I understood parts but not
-the whole mystery).
+lot simpler and the only Javascript on the site now is to highlight code. I'm also just happier
+about the state of things. I feel like I understand how and why my site works (where before I
+understood parts but not the whole mystery).
 
 <table>
   <thead style="vertical-align: bottom; text-align: center;">
