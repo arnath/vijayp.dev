@@ -75,6 +75,7 @@ ul {
 
 code {
   font-size: 14px;
+  border-radius: 2px;
 }
 
 /* Global convenience classes */
