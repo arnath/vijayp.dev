@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.search-row {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.search-bar {
+    flex-grow: 1;
+}
+
+.job-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 4px;
+    padding: 0.5em 1em;
+}

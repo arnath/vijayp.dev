@@ -30,14 +30,9 @@ def get_apple_jobs(locations_file_path: str | None = None):
                 "remoteOK": bool(job.get("homeOffice", "False")),
             }
 
-    output_directory = os.path.join(
-        os.getenv("BUILD_DIR", "dist/"),
-        "projects",
-        "better-apple-job-search",
-    )
-    os.makedirs(output_directory, exist_ok=True)
-
-    with open(os.path.join(output_directory, "jobs.json"), "w") as output_file:
+    with open(
+        os.path.join("src/lib/better-apple-job-search", "jobs.json"), "w"
+    ) as output_file:
         output_file.write(json.dumps(list(parsed_jobs.values())))
 
 
