@@ -5,11 +5,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>vijayp.dev</title>
+    <title>vijayp.dev - Better Apple Job Search</title>
     <link rel="icon" type="image/x-icon" href="/favicon.jpg">
     <link rel="stylesheet" href="/root.css" />
     <link rel="stylesheet" href="/projects/better-apple-job-search/index.css" />
 </head>
+
+<dialog id="filters-dialog">
+    <button type="submit">OK</button>
+    <button type="submit">Cancel</button>
+</dialog>
 
 <body>
     <main>
@@ -28,12 +33,11 @@
         </header>
         <div class="container">
             <h1>Better Apple Job Search</h1>
-            <form method="GET">
-                <div class="search-row">
-                    <input type="search" name="queryString" class="search-bar" placeholder="Enter query string ..." />
-                    <input type="submit" value="Search" />
-                </div>
-            </form>
+            <div class="search-row">
+                <input type="search" name="queryString" class="search-bar" placeholder="Enter query string ..." />
+                <button type="button" id="filters-button">Filters</button>
+                <button type="submit">Search</button>
+            </div>
         </div>
         <div class="job-card">
             <p><b>Title:</b> TH-Specialist: Full Time or Part Time, Permanent or Temporary</p>
@@ -41,6 +45,7 @@
             <p><b>Post Date:</b> 2024-12-24</p>
         </div>
     </main>
+    <script src="index.js"></script>
 </body>
 
 </html>
