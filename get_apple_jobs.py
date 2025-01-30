@@ -28,6 +28,7 @@ def get_apple_jobs(locations_file_path: str | None = None):
                 "summary": job["jobSummary"],
                 "teamName": job.get("team", {})["teamName"],
                 "remoteOK": bool(job.get("homeOffice", "False")),
+                "location": location["displayName"],
             }
 
     with open(
