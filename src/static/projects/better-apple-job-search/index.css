@@ -27,3 +27,7 @@ form {
     padding: 0.5em 1em;
     max-height: 200px;
 }
+
+.job-card p {
+    line-height: 1.5;
+}
