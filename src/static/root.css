@@ -97,8 +97,6 @@ button {
 
 .subtext {
     color: #696969;
-    /* Reduce line height for consistent spacing. */
-    line-height: 1;
 }
 
 /* Nav bar styles */
