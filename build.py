@@ -5,17 +5,30 @@ from pathlib import Path
 import pandoc
 from frontmatter import Frontmatter
 
+OUTPUT_DIRECTORY = os.getenv("BUILD_DIR", "dist/")
+POST_SNIPPET = """
+<div class="post">
+    <a href="/blog/{slug}/"><h3>{title}</h3></a>
+    <div class="subtext">{date}</div>
+</div>
+"""
+JOB_SNIPPET = """
+<a href="{link}" target="_blank">
+    <div class="job-card">
+        <p><b>{title}</b></p>
+        <p class="subtext">{team}</p>
+        <p class="subtext">{location}</p>
+        <p class="subtext">{postDate}</p>
+    </div>
+</a>
+"""
 
-def build():
-    # This script writes output to the dist/ directory. If the directory exists,
-    # delete it.
-    output_directory = os.getenv("BUILD_DIR", "dist/")
-    if os.path.exists(output_directory):
-        shutil.rmtree(output_directory)
 
-    # Copy src/static to dist/.
-    shutil.copytree("src/static/", output_directory)
+def build_apple_job_search():
+    pass
 
+
+def build_blog():
     # Load post template.
     with open("src/lib/blog/post-template.html", "r") as file:
         post_template = file.read()
@@ -45,16 +58,13 @@ def build():
             continue
 
         # Generate the HTML snippet for this post's link on the blog index.
-        post_html_snippets.append(f"""
-<div class="post">
-    <a href="/blog/{slug}/"><h3>{title}</h3></a>
-    <div class="subtext">{date}</div>
-</div>
-""")
+        post_html_snippets.append(
+            POST_SNIPPET.format(slug=slug, title=title, date=date)
+        )
         post_dates.append(post["attributes"]["date"])
 
         # Write the formatted post to the output directory.
-        post_path = os.path.join(output_directory, "blog", slug)
+        post_path = os.path.join(OUTPUT_DIRECTORY, "blog", slug)
         os.makedirs(post_path, exist_ok=True)
         with open(os.path.join(post_path, "index.html"), "w") as file:
             file.write(post_html)
@@ -67,8 +77,20 @@ def build():
     with open("src/lib/blog/index-template.html", "r") as file:
         index_template = file.read()
     index_html = index_template.format(posts=str.join("\n", sorted_snippets))
-    with open(os.path.join(output_directory, "blog", "index.html"), "w") as file:
+    with open(os.path.join(OUTPUT_DIRECTORY, "blog", "index.html"), "w") as file:
         file.write(index_html)
+
+
+def build():
+    # This script writes output to the dist/ directory. If the directory exists,
+    # delete it.
+    if os.path.exists(OUTPUT_DIRECTORY):
+        shutil.rmtree(OUTPUT_DIRECTORY)
+
+    # Copy src/static to dist/.
+    shutil.copytree("src/static/", OUTPUT_DIRECTORY)
+
+    build_blog()
 
 
 if __name__ == "__main__":

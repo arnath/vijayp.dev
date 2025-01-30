@@ -1,13 +1,24 @@
 [
     {
-        "id": "postLocation-state436",
-        "name": "Greater London, United Kingdom",
-        "displayName": "Greater London, United Kingdom",
-        "titleName": "Greater London",
-        "uniqueKey": "postLocation-state436",
-        "code": "state436",
+        "id": "postLocation-state156",
+        "name": "Beijing, China",
+        "displayName": "Beijing, China",
+        "titleName": "Beijing",
+        "uniqueKey": "postLocation-state156",
+        "code": "state156",
         "level": 3,
-        "urlName": "Greater London, United Kingdom",
-        "name_en_US": "Greater London"
+        "urlName": "Beijing, China",
+        "name_en_US": "Beijing"
+    },
+    {
+        "id": "postLocation-state1205",
+        "name": "Karnataka, India",
+        "displayName": "Karnataka, India",
+        "titleName": "Karnataka",
+        "uniqueKey": "postLocation-state1205",
+        "code": "state1205",
+        "level": 3,
+        "urlName": "Karnataka, India",
+        "name_en_US": "Karnataka"
     }
 ]

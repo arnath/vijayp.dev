@@ -17,19 +17,21 @@ def get_apple_jobs(locations_file_path: str | None = None):
 
     parsed_jobs: dict[str, Any] = {}
     for index, location in enumerate(locations):
-        print(f"Handling location {index + 1}: {location}")
         jobs = get_for_location(location)
+        original_length = len(parsed_jobs)
         for job in jobs:
-            parsed_jobs[job["id"]] = {
-                "id": job["id"],
-                "link": f"https://jobs.apple.com/en-us/details/{job['positionId']}",
-                "postDate": job.get("postDateInGMT"),
-                "title": job["postingTitle"],
-                "summary": job["jobSummary"],
-                "teamName": job.get("team", {})["teamName"],
-                "remoteOK": bool(job.get("homeOffice", "False")),
-                "location": location["displayName"],
-            }
+            if job["id"] not in parsed_jobs:
+                parsed_jobs[job["id"]] = {
+                    "link": f"https://jobs.apple.com/en-us/details/{job['positionId']}",
+                    "title": job["postingTitle"],
+                    "team": job.get("team", {}).get("teamName", "Not Specified"),
+                    "location": location["displayName"],
+                    "postDate": job.get("postDateInGMT"),
+                }
+
+        print(
+            f"Handled location {index + 1} {location['displayName']}, added {len(parsed_jobs) - original_length} jobs"
+        )
 
     with open(
         os.path.join("src/lib/better-apple-job-search", "jobs.json"), "w"
