@@ -2,6 +2,7 @@
 title: Things I wish I'd known when I started using Flutter
 date: 2023-08-27
 published: true
+last_updated: 2025-02-03
 ---
 
 Recently, I've been playing around in Flutter as a way to make iOS apps. I hate basically everything

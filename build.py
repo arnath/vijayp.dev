@@ -48,8 +48,10 @@ def build_blog():
         date = post["attributes"]["date"].strftime("%B %-d, %Y")
 
         # Convert the doc to HTML with Pandoc.
-        doc = pandoc.read(source=post["body"], format="markdown")
-        formatted_content = pandoc.write(doc, format="html")
+        doc = pandoc.read(file=file, format="markdown+yaml_metadata_block")
+        meta = doc[0]
+        print(meta)
+        formatted_content = pandoc.write(doc, format="html+yaml_metadata_block")
         post_html = post_template.format(
             title=title,
             date=date,
