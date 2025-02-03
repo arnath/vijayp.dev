@@ -25,7 +25,10 @@ JOB_SNIPPET = """
 
 
 def build_apple_job_search():
-    pass
+    shutil.copyfile(
+        "src/lib/better-apple-job-search/jobs.json",
+        os.path.join(OUTPUT_DIRECTORY, "projects/better-apple-job-search/jobs.json"),
+    )
 
 
 def build_blog():
@@ -91,6 +94,7 @@ def build():
     shutil.copytree("src/static/", OUTPUT_DIRECTORY)
 
     build_blog()
+    build_apple_job_search()
 
 
 if __name__ == "__main__":

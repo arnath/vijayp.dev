@@ -23,10 +23,8 @@ def get_apple_jobs(locations_file_path: str | None = None):
             if job["id"] not in parsed_jobs:
                 parsed_jobs[job["id"]] = {
                     "link": f"https://jobs.apple.com/en-us/details/{job['positionId']}",
-                    "title": job["postingTitle"],
-                    "team": job.get("team", {}).get("teamName", "Not Specified"),
-                    "location": location["displayName"],
-                    "postDate": job.get("postDateInGMT"),
+                    "job": job,
+                    "location": location,
                 }
 
         print(
