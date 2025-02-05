@@ -1,9 +1,12 @@
 from datetime import datetime, timezone
 import json
 import os
+import shutil
 import requests
 from typing import Any
 
+# This writes to static and not dist because the dist directory is deleted every time
+# the build script runs.
 OUTPUT_DIRECTORY = "src/static/blog/apple-jobs"
 
 
@@ -42,6 +45,12 @@ def get_apple_jobs(locations_file_path: str | None = None):
 
     with open(os.path.join(OUTPUT_DIRECTORY, "jobs.json"), "w") as jobs_json:
         jobs_json.write(json.dumps(sorted_jobs))
+
+    # Copy the locations file because it's referenced in the blog post.
+    shutil.copyfile(
+        "src/lib/apple-jobs/locations.json",
+        os.path.join(OUTPUT_DIRECTORY, "locations.json"),
+    )
 
 
 def get_job_sort_key(job: Any):

@@ -72,8 +72,8 @@ I understood parts but not the whole mystery).
 <table>
   <thead style="vertical-align: bottom; text-align: center;">
     <tr>
-      <td><i class="subtext" style="font-size: 14px;">Before, with SvelteKit</i></td>
-      <td><i class="subtext" style="font-size: 14px;">After, with plain HTML</i></td>
+      <td><figcaption>Before, with SvelteKit</figcaption></td>
+      <td><figcaption>After, with plain HTML</figcaption></td>
     </tr>
   </thead>
   <tbody style="vertical-align: top; text-align: center;">
