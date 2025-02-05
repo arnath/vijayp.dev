@@ -78,6 +78,10 @@ code {
     border-radius: 2px;
 }
 
+button {
+    font-size: 14px;
+}
+
 /* Global convenience classes */
 .stretch {
     width: 100%;

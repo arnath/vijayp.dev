@@ -1,0 +1,24 @@
+[
+    {
+        "id": "postLocation-HKGC",
+        "name": "Hong Kong",
+        "displayName": "Hong Kong",
+        "titleName": "Hong Kong",
+        "uniqueKey": "postLocation-HKGC",
+        "code": "HKGC",
+        "level": 1,
+        "urlName": "Hong Kong",
+        "name_en_US": "Hong Kong"
+    },
+    {
+        "id": "postLocation-KOR",
+        "name": "Korea (Republic of)",
+        "displayName": "Korea (Republic of)",
+        "titleName": "Korea (Republic of)",
+        "uniqueKey": "postLocation-KOR",
+        "code": "KOR",
+        "level": 1,
+        "urlName": "Korea (Republic of)",
+        "name_en_US": "Korea (Republic of)"
+    }
+]
