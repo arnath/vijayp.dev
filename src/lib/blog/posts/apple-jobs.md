@@ -4,8 +4,8 @@ date: 2025-02-04
 published: true
 ---
 
-**TL;DR**: I downloaded the data from Apple's careers site because their search UI infuriates me.
-The raw data is available here: [`jobs.json`](./jobs.json). The data was last updated 2025-02-03.
+_TL;DR: I downloaded the data from Apple's careers site because their search UI infuriates me. The
+raw data is available here: [`jobs.json`](./jobs.json). The data was last updated 2025-02-03._
 
 As I mentioned in [my last blog post](../rewrite-plain-html/), I'm currently unemployed and spending
 a lot of time job searching. I would obviously love to apply to some roles at Apple but I find their
@@ -19,11 +19,10 @@ personally. <br /><br />
 ![Location is required](./location-required.png)
 
 For one, there's no way to search across all locations. This likely doesn't affect most people but
-I'm currently in a unique life situation where I'm looking for jobs in multiple countries. Even
-aside from this though, this has the unfortunate side effect of making it impossible to get a
-general sense of where there are openings without having a location in mind. Note that it _does_
-have a country filter, which is why I say this probably affects me more than most
-people.<br /><br />
+I'm currently in a unique life situation where I'm looking for jobs in multiple countries. This also
+makes it difficult to tell what locations Apple has jobs in unless you go elsewhere and look up the
+possible options. Note that it _does_ have a country filter, which is why I say this probably
+affects me more than most people.<br /><br />
 
 ![Engineers could fall under a lot of these](./teams.png)
 
@@ -114,6 +113,6 @@ with open("jobs.json", "r") as file:
 ```
 
 I actually ran this because it was useful to me personally so I saved the output. That data is in
-[`jobs-europe.json`](./jobs-europe.json).
+[`jobs-europe.json`](./jobs-europe.json). Hopefully this is helpful to someone. Happy job hunting!
 
 [apple]: https://jobs.apple.com/en-us
