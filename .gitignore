@@ -2,3 +2,4 @@
 .vscode
 dist
 .ruff_cache
+.DS_Store

@@ -4,15 +4,13 @@ import os
 import requests
 from typing import Any
 
-OUTPUT_DIRECTORY = "src/lib/better-apple-job-search"
+OUTPUT_DIRECTORY = "src/static/blog/apple-jobs"
 
 
 def get_apple_jobs(locations_file_path: str | None = None):
     # I made a few smaller location files for testing but this is the default.
     if not locations_file_path:
-        locations_file_path = (
-            "src/lib/better-apple-job-search/locations-2024-09-01.json"
-        )
+        locations_file_path = "src/lib/apple-jobs/locations.json"
 
     with open(locations_file_path, "r") as file:
         locations = json.loads(file.read())
@@ -29,21 +27,29 @@ def get_apple_jobs(locations_file_path: str | None = None):
                     **job,
                 }
 
-        # We do this because jobs are sometimes listed twice across two locations. We have more
-        # specific locations first so they won't be overwritten in the dictionary.
+        # We do this because jobs are sometimes listed twice across two locations. This is also
+        # why we use a dictionary to compile the jobs.
         print(
             f"Handled location {index + 1} {location['displayName']}, added {len(parsed_jobs) - original_length} jobs"
         )
 
     # Write the jobs as JSON.
-    with open(os.path.join(OUTPUT_DIRECTORY, "jobs.json"), "w") as jobs_json:
-        jobs_json.write(json.dumps(list(parsed_jobs.values())))
+    sorted_jobs = sorted(
+        parsed_jobs.values(),
+        key=get_job_sort_key,
+        reverse=True,
+    )
 
-    # Write the date that the jobs were last updated.
-    with open(
-        os.path.join(OUTPUT_DIRECTORY, "update_timestamp.txt"), "w"
-    ) as update_timestamp:
-        update_timestamp.write(datetime.now(timezone.utc).strftime("%Y-%m-%d"))
+    with open(os.path.join(OUTPUT_DIRECTORY, "jobs.json"), "w") as jobs_json:
+        jobs_json.write(json.dumps(sorted_jobs))
+
+
+def get_job_sort_key(job: Any):
+    post_date = job.get("postDateInGMT")
+    if not post_date:
+        return datetime(1, 1, 1, tzinfo=timezone.utc)
+
+    return datetime.fromisoformat(post_date)
 
 
 def get_for_location(location: Any) -> list[Any]:

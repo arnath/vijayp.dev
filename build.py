@@ -12,23 +12,6 @@ POST_SNIPPET = """
     <div class="subtext">{date}</div>
 </div>
 """
-JOB_SNIPPET = """
-<a href="{link}" target="_blank">
-    <div class="job-card">
-        <p><b>{title}</b></p>
-        <p class="subtext">{team}</p>
-        <p class="subtext">{location}</p>
-        <p class="subtext">{postDate}</p>
-    </div>
-</a>
-"""
-
-
-def build_apple_job_search():
-    shutil.copyfile(
-        "src/lib/better-apple-job-search/jobs.json",
-        os.path.join(OUTPUT_DIRECTORY, "projects/better-apple-job-search/jobs.json"),
-    )
 
 
 def build_blog():
@@ -48,10 +31,8 @@ def build_blog():
         date = post["attributes"]["date"].strftime("%B %-d, %Y")
 
         # Convert the doc to HTML with Pandoc.
-        doc = pandoc.read(file=file, format="markdown+yaml_metadata_block")
-        meta = doc[0]
-        print(meta)
-        formatted_content = pandoc.write(doc, format="html+yaml_metadata_block")
+        doc = pandoc.read(source=post["body"], format="markdown")
+        formatted_content = pandoc.write(doc, format="html")
         post_html = post_template.format(
             title=title,
             date=date,
@@ -96,7 +77,6 @@ def build():
     shutil.copytree("src/static/", OUTPUT_DIRECTORY)
 
     build_blog()
-    build_apple_job_search()
 
 
 if __name__ == "__main__":
