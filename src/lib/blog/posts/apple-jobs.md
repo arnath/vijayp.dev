@@ -79,9 +79,10 @@ script if you want to play with it.
 
 The jobs data I downloaded is in [`jobs.json`](./jobs.json). When I originally started playing with
 this, I wanted to put together a simple web app that surfaced the data. I went through a bunch of
-iteration on it. However, the core feature was basically searching the jobs data and it turns out
-that doing that naively (case insensitive string contains) on 4000 jobs while you type is too much
-for your browser to handle without causing performance issues.
+iteration on it (you can see some of it in the commit history of [this PR][pr]). However, the core
+feature was basically searching the jobs data and it turns out that doing that naively (case
+insensitive string contains) on 4000 jobs while you type is too much for your browser to handle
+without causing performance issues.
 
 While I could have solved this by implementing something more complicated than just searching on
 some in-memory JSON, nothing I came up with really seemed worth the amount of effort it would take.
@@ -116,3 +117,4 @@ I actually ran this because it was useful to me personally so I saved the output
 [`jobs-europe.json`](./jobs-europe.json). Hopefully this is helpful to someone. Happy job hunting!
 
 [apple]: https://jobs.apple.com/en-us
+[pr]: https://github.com/arnath/vijayp.dev/pull/2
