@@ -5,7 +5,7 @@ published: true
 ---
 
 _TL;DR: I downloaded the data from Apple's careers site because their search UI infuriates me. The
-raw data is available here: [`jobs.json`](./jobs.json). The data was last updated 2025-02-03._
+raw data is available here: [`jobs.json`](./jobs.json). The data was last updated 2025-02-018._
 
 As I mentioned in [my last blog post](../rewrite-plain-html/), I'm currently unemployed and spending
 a lot of time job searching. I would obviously love to apply to some roles at Apple but I find their
