@@ -10,6 +10,6 @@ dependencies = []
 dev = [
     "frontmatter>=3.0.8",
     "pandoc>=2.4",
-    "requests>=2.32.3",
-    "ruff>=0.9.1",
+    "requests>=2.32.5",
+    "ruff>=0.15.5",
 ]
